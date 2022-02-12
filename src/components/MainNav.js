@@ -52,6 +52,7 @@ export default function SimpleBottomNavigation() {
       width: '100%',
       position: 'fixed',
       bottom: 0,
+      zIndex: 100,
       
       '& .MuiBottomNavigation-root': {
         backgroundColor: '#2d313a',
