@@ -43,12 +43,16 @@ const SingleContent = ({ item, media_type }) => {
         alt={item.title || item.name}
       />
 
-      <b className="title">{item.title || item.name}</b>
+      <div className="content">
+        <b className="title">{item.title || item.name}</b>
 
-      <span className="subTitle">
-        {media_type === "tv" ? "TV Series" : "Movie"}
-        <span>{item.first_air_date || item.release_date}</span>
-      </span>
+        <span className="subTitle">
+          {media_type === "tv" ? "TV Series" : "Movie"}
+          <span>{item.first_air_date || item.release_date}</span>
+        </span>
+      </div>    
+
+     
 
       </div>
       </ContentModal>
