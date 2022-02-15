@@ -23,8 +23,6 @@ const useStyles = makeStyles((theme) => ({
 const CustomPagination = ({ setPage, PageTotal = 10, page }) => {
   const classes = useStyles();
 
-  console.log({page})
-
   // const handlePageChange = (pageNumber) => {
   //   console.log({pageNumber})
   //   setPage(pageNumber);

@@ -1,33 +1,58 @@
 import React from "react";
 import { img_300, unavailable } from "../../config/config";
-import './SingleContent.css'
-import Badge from '@mui/material/Badge';
+import "./SingleContent.css";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import { singletonTheme } from "../../Mui/theme";
+import { ThemeProvider } from "@mui/material/styles";
+import ContentModal from "../ContentModal/ContentModal";
 
 
-const SingleContent = ({ item }) => {
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: 20,
+    top: 15,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: 5,
+    fontSize: 14,
+    height: 20,
+  },
+}));
+
+const SingleContent = ({ item, media_type }) => {
   // console.log(item)
   return (
-    <div className="media">
+    <>
+    <ContentModal media_type={media_type} id={item.id}>
+      <div className="media">
 
-      <Badge 
-        badgeContent={item.vote_average} 
-        color={ item.vote_average >= 7 ? 'primary': 'secondary' }
-      />
+      <ThemeProvider theme={singletonTheme}>
+        <StyledBadge
+          badgeContent={item.vote_average}
+          color={item.vote_average >= 7 ? "primary" : "secondary"}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        />
+      </ThemeProvider>
 
       <img
         className="poster"
-        src={ item.poster_path ? `${img_300}/${item.poster_path}` : unavailable }
-        alt={ item.title || item.name }
+        src={item.poster_path ? `${img_300}/${item.poster_path}` : unavailable}
+        alt={item.title || item.name}
       />
 
-      <b className="title">{ item.title || item.name }</b>
+      <b className="title">{item.title || item.name}</b>
 
       <span className="subTitle">
-        { item.media_type === 'tv' ? "TV Series" : "Movie" }
-        <span>{ item.first_air_date || item.release_date  }</span>
+        {media_type === "tv" ? "TV Series" : "Movie"}
+        <span>{item.first_air_date || item.release_date}</span>
       </span>
 
-    </div>
+      </div>
+      </ContentModal>
+    </>
   );
 };
 

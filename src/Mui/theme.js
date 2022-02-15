@@ -1,6 +1,6 @@
 
 import { createTheme } from '@mui/material/styles';
-import { purple, green, red } from '@mui/material/colors';
+import { purple, green, red, yellow, orange, blue, pink } from '@mui/material/colors';
 
 
 
@@ -45,9 +45,36 @@ const theme = createTheme({
 
 export const darkTheme = createTheme({
   palette: {
+    primary: {
+      main: "#fff",
+    },
     mode: 'dark'
-  }
+  } 
 });
+
+
+// export const darkThemeSearch = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#fff",
+//     },
+//     mode: 'dark'
+//   }
+// });
+
+
+export const singletonTheme = createTheme({
+  palette: {
+    // primary: {
+    //   main: blue[300],
+    // },
+    // secondary: {
+    //   main: red[300]
+    // }
+    primary: blue,
+    secondary: pink
+  }
+})
 
 
 export default theme;

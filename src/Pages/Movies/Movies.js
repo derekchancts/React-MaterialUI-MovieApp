@@ -20,6 +20,7 @@ const Movies = () => {
       const { data } = await axios.get(
         // `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
         `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&page=${page}&with_genres=${genreforURL}`
+        // `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=zh-HK&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&page=${page}&with_genres=${genreforURL}`
       );
       // console.log({ movies: data });
       setContent(data.results);
@@ -49,7 +50,7 @@ const Movies = () => {
 
       <div className="trending">
         {content &&
-          content.map((item) => <SingleContent key={item.id} item={item} />)}
+          content.map((item) => <SingleContent key={item.id} item={item} media_type="movie" />)}
       </div>
 
       {PageTotal > 1 && (

@@ -20,8 +20,6 @@ const Series = () => {
     // console.log({data})
     setContent(data.results);
     setPageTotal(data.total_pages);
-    // setPage(1)
-    // console.log(data);
   };
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const Series = () => {
       />
       <div className="trending">
         {content &&
-          content.map((item) => <SingleContent key={item.id} item={item} />)}
+          content.map((item) => <SingleContent key={item.id} item={item} media_type="tv" />)}
       </div>
       {PageTotal > 1 && (
         <CustomPagination page={page} setPage={setPage} PageTotal={PageTotal} />
