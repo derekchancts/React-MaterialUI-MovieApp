@@ -3,6 +3,24 @@ import axios from "axios";
 import "./Trending.css";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import CustomPagination from "../../components/Pagination/CustomPagination";
+import { styled } from "@mui/material/styles";
+
+
+
+
+const StyledDiv = styled('div')(({ theme }) => ({
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-around",
+
+  // [theme.breakpoints.up('md')]: {
+  //   backgroundColor: 'red',
+  // },
+  // [theme.breakpoints.down('sm')]: {
+  //   margin: '30px 0'
+  // },
+}));
+
 
 const Trending = () => {
   const [content, setContent] = useState([]);
@@ -41,10 +59,13 @@ const Trending = () => {
   return (
     <div>
       <span className="pageTitle">Trending</span>
-      <div className="trending">
+      
+      <StyledDiv>
+      {/* <div className="trending"> */}
         {content &&
           content.map((item) => <SingleContent key={item.id} item={item} media_type={item.media_type} />)}
-      </div>
+      {/* </div> */}
+      </StyledDiv>
 
       <CustomPagination setPage={setPage} PageTotal={PageTotal} />
     </div>
